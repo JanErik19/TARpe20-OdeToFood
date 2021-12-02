@@ -11,9 +11,9 @@ namespace OdeToFood.Controllers
 	public class ReviewsController : Controller
 	{
 		// GET: ReviewsController
-		public ActionResult Index()
+		public ActionResult Index([Bind(Prefix ="id")] int restaurantId)
 		{
-			var model = from review in _reviews
+			var model = _context.Restaurants
 															orderby review.Country
 															select review;
 			return View(model);
